@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "source": "IARC Global Cancer Observatory",
+    "incidence_source": "Cancer Today",
+    "projection_source": "Cancer Tomorrow",
+    "geography": "India",
+    "current_year": 2024,
+    "projection_end_year": 2050
+  },
+  "summary": {
+    "total_new_cases": 1562581,
+    "total_cancer_related_deaths": 901828
+  },
+  "gender": {
+    "male_cases": 782181,
+    "female_cases": 780400,
+    "male_percentage": 50.06,
+    "female_percentage": 49.94
+  },
+  "top_cancers": [
+    {
+      "rank": 1,
+      "cancer_type": "Breast",
+      "total_cases": 237231
+    },
+    {
+      "rank": 2,
+      "cancer_type": "Lip, oral cavity",
+      "total_cases": 205878
+    },
+    {
+      "rank": 3,
+      "cancer_type": "Trachea, bronchus and lung",
+      "total_cases": 112659
+    },
+    {
+      "rank": 4,
+      "cancer_type": "Colorectum",
+      "total_cases": 83577
+    },
+    {
+      "rank": 5,
+      "cancer_type": "Cervix uteri",
+      "total_cases": 79360
+    }
+  ],
+  "mortality": {
+    "total_deaths": 901828,
+    "asr_world_per_100k": 60.4,
+    "crude_rate_per_100k": 62.2,
+    "cumulative_risk_0_74_percent": 6.8,
+    "note": "Overall mortality only; cancer-type-specific mortality values were not provided."
+  },
+  "projection": [
+    {
+      "year": 2024,
+      "projected_cases": 1562581
+    },
+    {
+      "year": 2025,
+      "projected_cases": 1606357
+    },
+    {
+      "year": 2030,
+      "projected_cases": 1834573
+    },
+    {
+      "year": 2035,
+      "projected_cases": 2075857
+    },
+    {
+      "year": 2040,
+      "projected_cases": 2325675
+    },
+    {
+      "year": 2045,
+      "projected_cases": 2578546
+    },
+    {
+      "year": 2050,
+      "projected_cases": 2827251
+    }
+  ],
+  "calculations": {
+    "absolute_increase": 1264670,
+    "percentage_growth": 80.93,
+    "cagr_percent": 2.31
+  },
+  "observations": [
+    "India recorded 1,562,581 new cancer cases in 2024.",
+    "India recorded 901,828 cancer-related deaths in 2024.",
+    "New cancer cases are projected to reach 2,827,251 by 2050.",
+    "The projected increase from 2024 to 2050 is 1,264,670 cases (80.93%).",
+    "Male and female new cancer cases are nearly equal (50.06% and 49.94%).",
+    "Breast is the leading cancer type in the supplied top-five incidence data (237,231 cases)."
+  ]
+}
