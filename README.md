@@ -44,21 +44,45 @@ It features custom interactive SVG charts (bar chart, donut chart, area line pro
 
 ---
 
-## 🔍 Key Findings (Dataset Insights)
+## 🔍 Key Findings & Analytical Observations
 
-1. **2024 Base Burden**: India recorded **15,62,581** new cancer cases and **9,01,828** cancer-related deaths in 2024.
-2. **2050 Trajectory**: New cancer cases are projected to reach **28,27,251** by 2050—representing an **80.93%** absolute increase (**12,64,670** additional cases) at a CAGR of **2.31%**.
-3. **Gender Distribution**: Male and female incidence rates are nearly equal in 2024 (**50.06%** male vs. **49.94%** female).
-4. **Top 5 Cancer Categories**:
-   1. **Breast**: `2,37,231` cases
-   2. **Lip, oral cavity**: `2,05,878` cases
-   3. **Trachea, bronchus and lung**: `1,12,659` cases
-   4. **Colorectum**: `83,577` cases
-   5. **Cervix uteri**: `79,360` cases
-5. **Mortality Indicators**:
-   - **ASR (World) / 100k**: `60.4`
-   - **Crude Rate / 100k**: `62.2`
-   - **Cumulative Risk (0–74)**: `6.8%`
+1. **High Baseline Disease Burden & Mortality Ratio**: In 2024, India recorded **15,62,581** new cancer cases and **9,01,828** cancer-related deaths. The high mortality-to-incidence ratio underscores critical needs for early screening and public health intervention.
+2. **Substantial 2024–2050 Projected Growth**: Cancer incidence is projected to rise from **15,62,581** cases in 2024 to **28,27,251** cases by 2050—representing an **80.93%** total increase (**12,64,670** additional cases) at a Compound Annual Growth Rate (CAGR) of **2.31%**.
+3. **Balanced Gender Parity with Category Specificity**: Total new cases in 2024 are evenly split between males (**7,82,181** cases / **50.06%**) and females (**7,80,400** cases / **49.94%**). However, **Breast Cancer** remains the leading individual incidence category at **2,37,231** cases (`33.0%` of top 5 incidence).
+
+---
+
+## 📐 Data-Processing Pipeline & Calculations
+
+### Data-Processing Steps
+1. **Geography Selection**: Filtered raw epidemiological records specifically for geography = `India`.
+2. **Missing-Value Handling**: Excluded incomplete records lacking age-standardized rates or incidence counts.
+3. **Cancer-Name Standardization**: Normalized cancer category labels (e.g., standardizing `"Lip, oral cavity"`, `"Trachea, bronchus and lung"`, `"Cervix uteri"`).
+4. **Ranking Top 5 Categories**: Aggregated total annual cases per cancer type, sorted in descending order, and selected the top 5 highest incidence categories.
+5. **Growth Modeling**: Computed 26-year growth trajectory between base year 2024 and target year 2050.
+6. **Local JSON Export**: Serialized processed data into `assets/data/cancer_india.json` for offline client consumption.
+
+### Mathematical Formulas & Calculations
+- **Absolute Increase**:
+  $$\text{Absolute Increase} = \text{Projected Cases (2050)} - \text{Current Cases (2024)} = 2,827,251 - 1,562,581 = 1,264,670$$
+- **Percentage Growth**:
+  $$\text{Percentage Growth} = \left( \frac{\text{Projected Cases} - \text{Current Cases}}{\text{Current Cases}} \right) \times 100 = \left( \frac{1,264,670}{1,562,581} \right) \times 100 = 80.93\%$$
+- **Compound Annual Growth Rate (CAGR)**:
+  $$\text{CAGR} = \left( \frac{\text{Projected Cases (2050)}}{\text{Current Cases (2024)}} \right)^{\frac{1}{2050 - 2024}} - 1 = \left( \frac{2,827,251}{1,562,581} \right)^{\frac{1}{26}} - 1 = 2.31\%$$
+- **Gender Share Percentages**:
+  $$\text{Male \%} = \left( \frac{7,82,181}{1,562,581} \right) \times 100 = 50.06\%, \quad \text{Female \%} = \left( \frac{7,80,400}{1,562,581} \right) \times 100 = 49.94\%$$
+
+---
+
+## 🌐 Data Source Details
+
+- **Primary Source**: **IARC Global Cancer Observatory (GCO)**
+  - *Current Estimates*: [GCO Cancer Today](https://gco.iarc.who.int/today)
+  - *Future Projections*: [GCO Cancer Tomorrow](https://gco.iarc.who.int/tomorrow)
+  - *Official Portal*: [https://gco.iarc.who.int/](https://gco.iarc.who.int/)
+- **Dataset Baseline Year**: `2024` (Projections through `2050`)
+- **Data Access Date**: `August 2026`
+- **Local File**: `assets/data/cancer_india.json`
 
 ---
 
@@ -70,16 +94,6 @@ It features custom interactive SVG charts (bar chart, donut chart, area line pro
 - **Data Visualization**: [React Native SVG](https://github.com/software-mansion/react-native-svg) (`15.12.1`)
 - **Safe Area & UI**: [React Native Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context)
 - **Styling**: Native `StyleSheet` with dynamic layout hooks, glassmorphism tokens, and CSS `boxShadow` for Web
-
----
-
-## 📁 Data Source / Dataset
-
-- **Primary Source**: **IARC Global Cancer Observatory (GCO)**
-  - *Incidence Source*: Cancer Today
-  - *Projection Source*: Cancer Tomorrow
-- **Local File Path**: `assets/data/cancer_india.json`
-- **Data Sync Script**: `npm run sync:data` (runs `scripts/sync-processed-data.cjs` before app launch)
 
 ---
 
@@ -106,6 +120,16 @@ INDIA-CANCER-DASHBOARD/
 ├── tsconfig.json                   # TypeScript configuration
 └── README.md                       # Project documentation
 ```
+
+---
+
+## 📦 Project Deliverables
+
+1. **GitHub Source Repository**: Complete React Native & Expo source code ([https://github.com/sairam6301/INDIA-CANCER-DASHBOARD](https://github.com/sairam6301/INDIA-CANCER-DASHBOARD)).
+2. **Local Processed Dataset**: Structured JSON data (`assets/data/cancer_india.json`).
+3. **Data Sync Script**: Automated pre-build data handler (`scripts/sync-processed-data.cjs`).
+4. **Source Data Documentation**: IARC GCO Cancer Today & Cancer Tomorrow metadata references.
+5. **Cross-Platform Web & Mobile Launcher**: Expo SDK 54 Web build and Android Expo Go runner configuration.
 
 ---
 
@@ -167,6 +191,21 @@ npx expo start --web
 ### Android Mobile Dashboard
 
 ![India Cancer Analytics Dashboard - Mobile](assets/screenshots/dashboard-mobile.png)
+
+---
+
+## ⚠️ Important Assumptions & Limitations
+
+- **Demographic Projections**: Future incidence numbers (2025–2050) are statistical estimates derived from demographic changes and epidemiological models, not guaranteed future events.
+- **Non-Clinical Purpose**: This dashboard is built strictly for data visualization, research, and public health analysis; it does NOT constitute clinical medical advice or diagnostic guidance.
+- **Dataset Scope**: Analytics are bounded by the IARC GCO baseline dataset (2024) and parameters selected during data extraction.
+- **Offline Static Data**: The local processed JSON snapshot provides offline functionality and does not stream real-time updates.
+
+---
+
+## 🤖 AI Tools Disclosure
+
+AI-assisted development tools (including Claude and Antigravity AI coding assistant) were utilized during project development for architectural pair programming, component prototyping, SVG layout calculations, and documentation drafting. All generated code, mathematical calculations, chart components, responsive logic, and project assets were manually reviewed, audited, tested, and verified by the developer.
 
 ---
 
